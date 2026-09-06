@@ -1,0 +1,17 @@
+name: Text Checker Pipeline
+
+# 1. This triggers the pipeline every time you update your files
+on: [push]
+
+jobs:
+  check-my-text:
+    runs-on: ubuntu-latest # GitHub gives us a free virtual computer to run this
+
+    steps:
+    # Step A: Copy your project files onto the virtual computer
+    - name: Get project files
+      uses: actions/checkout@v4
+
+    # Step B: Search the file for the word 'devops'
+    - name: Verify word exists
+      run: grep "devops" todo.txt
